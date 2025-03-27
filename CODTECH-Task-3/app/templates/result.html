@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+          body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { color: #2c3e50; text-align: center; }
+        .result-card { 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 8px; 
+            text-align: center;
+            font-size: 18px;
+        }
+        .churn { background: #ffdddd; color: #c0392b; }
+        .no-churn { background: #ddffdd; color: #27ae60; }
+        .back-btn { 
+            display: block; 
+            text-align: center; 
+            margin-top: 20px; 
+            color: #3498db; 
+            text-decoration: none;
+        }
+        .back-btn:hover { text-decoration: underline; }
+        /* ... keep your existing styles ... */
+    </style>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    
+    <div class="result-card {% if prediction == 'Churn' %}churn{% else %}no-churn{% endif %}">
+        <h2>{{ prediction }}</h2>
+        <p>Probability: {{ probability }}</p>
+    </div>
+
+    <h3>Input Details:</h3>
+    <table class="data-table">
+        {% for key, value in input_data.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <a href="/" class="back-btn">Make Another Prediction</a>
+</body>
+</html>

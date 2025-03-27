@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Churn Prediction</title>
+    <style>
+         body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { color: #2c3e50; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 200px; font-weight: bold; }
+        input, select { padding: 8px; width: 300px; border: 1px solid #ddd; border-radius: 4px; }
+        button { 
+            padding: 10px 20px; 
+            background: #3498db; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover { background: #2980b9; }
+        .form-container { background: #f9f9f9; padding: 20px; border-radius: 8px; }
+        /* ... keep your existing styles ... */
+    </style>
+</head>
+<body>
+    <h1>Customer Churn Prediction</h1>
+    
+    <div class="form-container">
+        <form action="/predict" method="post">
+            <!-- Numeric Fields -->
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required min="18" max="100">
+            </div>
+            
+            <!-- Categorical Fields -->
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="membership">Membership Type:</label>
+                <select id="membership" name="membership" required>
+                    <option value="Basic">Basic</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Enterprise">Enterprise</option>
+                </select>
+            </div>
+            
+            <!-- Add ALL required fields -->
+            <div class="form-group">
+                <label for="tenure">Tenure (days):</label>
+                <input type="number" id="tenure" name="tenure" required min="30" max="1095">
+            </div>
+            
+            <div class="form-group">
+                <label for="monthly_charge">Monthly Charge ($):</label>
+                <input type="number" step="0.01" id="monthly_charge" name="monthly_charge" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="total_spend">Total Spend ($):</label>
+                <input type="number" step="0.01" id="total_spend" name="total_spend" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="login_frequency">Login Frequency (per month):</label>
+                <input type="number" id="login_frequency" name="login_frequency" required min="1" max="30">
+            </div>
+            
+            <div class="form-group">
+                <label for="support_tickets">Support Tickets (last month):</label>
+                <input type="number" id="support_tickets" name="support_tickets" required min="0" max="10">
+            </div>
+            
+            <div class="form-group">
+                <label for="payment_delays">Payment Delays (last year):</label>
+                <input type="number" id="payment_delays" name="payment_delays" required min="0" max="6">
+            </div>
+            
+            <div class="form-group">
+                <label for="feature_usage">Feature Usage (1-10):</label>
+                <input type="number" id="feature_usage" name="feature_usage" required min="1" max="10">
+            </div>
+            
+            <div class="form-group">
+                <label for="last_login">Days Since Last Login:</label>
+                <input type="number" id="last_login" name="last_login" required min="1" max="90">
+            </div>
+            
+            <button type="submit">Predict Churn</button>
+        </form>
+    </div>
+</body>
+</html>
